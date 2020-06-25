@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users Data</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body class="bg-success text-white">
+  <div class="mt-5 container">
+    <div class="">
+    <h4>Display Users</h4>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{user.id}}</td>
+          <td>{{user.first_name}} {{user.last_name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.age}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    <div class="">
+      <h4>Update Users</h4>
+    <form action="/process" method="POST" class="form-group">
+      {% csrf_token %}
+      <input type="text" name="first" id="first" class="form-control mb-1" placeholder="First Name">
+      <input type="text" name="last" id="last" class="form-control mb-1" placeholder="Last Name">
+      <input type="email" name="email" id="email" class="form-control mb-1" placeholder="Email">
+      <input type="number" name="age" id="age" class="form-control" placeholder="Age">
+      <button class="btn btn-primary mt-3">Submit</button>
+    </form>
+    </div>
+  </div>
+</body>
+</html>
